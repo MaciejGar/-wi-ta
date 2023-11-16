@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Witaj Święta!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Wesołych Świąt!</h1>
+        <p>Zapraszamy do świątecznej przygody!</p>
+    </header>
+
+    <nav>
+        <ul>
+            
+            <li><a href="#carols">Kolędy</a></li>
+            <li><a href="#gallery">Galeria</a></li>
+            <li><a href="#games">Gry</a></li>
+            <li><a href="#recipes">Przepisy</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section id="santa-greeting">
+        <img src="santa-claus.png" alt="Święty Mikołaj" height="200">
+        <p>Ho Ho Ho! Wesołych Świąt życzy Święty Mikołaj!</p>
+    </section>
+
+    <!-- Tutaj będziesz dodawać kolejne sekcje strony -->
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <!-- ... reszta nagłówka ... -->
+</head>
+<body>
+    <!-- ... powitanie, menu nawigacyjne, przywitanie od Świętego Mikołaja ... -->
+
+    <section id="carols">
+        <h2>Popularne Polskie Kolędy</h2>
+        <ul>
+            <li>Cicha Noc</li>
+            <li>Bóg się rodzi</li>
+            <li>Wśród nocnej ciszy</li>
+            <!-- ... więcej kolęd ... -->
+        </ul>
+    </section>
+
+    <section id="kryszmas-alkoholis">
+        <h2>52 Dębiec - Kryszmas Alkoholis</h2>
+        <p>Tutaj umieść tekst piosenki, jeśli posiadasz do tego prawa.</p>
+        <!-- Możesz dodać odtwarzacz audio lub link do strony z nagraniem piosenki -->
+    </section>
+
+    <!-- ... kolejne sekcje strony ... -->
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Świąteczna Strona</title>
+    <style>
+        /* Istniejące style... */
+
+        /* Styl dla płatków śniegu */
+        .snowflake {
+            color: #fff;
+            font-size: 1em;
+            position: absolute;
+            top: -10px;
+            z-index: 9999;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Styl dla gry i animacji Mikołaja */
+        .game-container {
+            margin: 20px 0;
+            position: relative;
+        }
+        .mikołaj {
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .mikołaj:hover {
+            transform: scale(1.1);
+        }
+
+        /* Styl dla licznika znalezionych Mikołajów */
+        .mikołaj-counter {
+            margin: 20px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nagłówek, nawigacja, licznik... -->
+
+    <div class="content">
+        <div class="countdown" id="countdown">
+            <!-- Licznik zostanie wypełniony przez JavaScript -->
+        </div>
+
+        <section id="kolędy">
+            <h2>Kolędy</h2>
+            <p>Cicha noc...</p>
+        </section>
+
+        <section id="galeria" class="snow-area">
+            <h2>Galeria Zdjęć</h2>
+            <!-- Zdjęcia świąteczne -->
+        </section>
+
+        <section id="gry" class="snow-area">
+            <h2>Gry Świąteczne</h2>
+            <div class="game-container">
+                <img src="mikolaj.png" alt="Mikołaj" class="mikołaj">
+                <!-- Dodaj więcej obrazków dla gry -->
+            </div>
+            <div class="mikołaj-counter" id="mikołajCounter">Znalazłeś Mikołaja 0 razy</div>
+        </section>
+
+        <section id="przepisy">
+            <h2>Przepisy Świąteczne</h2>
+            <!-- Przepisy kulinarne -->
+        </section>
+    </div>
+
+    <!-- Stopka... -->
+
+    <script>
+        // Skrypt odliczający do świąt...
+
+        // Skrypt na spadające płatki śniegu w określonych sekcjach
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 20 + 10 + 'px';
+
+            const snowAreas = document.querySelectorAll('.snow-area');
+            const randomArea = snowAreas[Math.floor(Math.random() * snowAreas.length)];
+            randomArea.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        setInterval(createSnowflake, 100);
+
+        // Skrypt dla gry "Znajdź Mikołaja"
+        let mikołajCount = 0;
+        document.querySelectorAll('.mikołaj').forEach(mikołaj => {
+            mikołaj.addEventListener('click', () => {
+                mikołajCount++;
+                document.getElementById('mikołajCounter').textContent = 'Znalazłeś Mikołaja ' + mikołajCount + ' razy';
+            });
+        });
+    </script>
+
+</body>
+</html>
